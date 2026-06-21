@@ -1,6 +1,9 @@
 [project]
 name = "claudeexportchinese"
 version = "0.1.0"
-description = "Add your description here"
+description = "将 Claude 导出的对话转换为可读的 Markdown 文件"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "pyside6>=6.6.0",
+    "PySide6-Fluent-Widgets>=1.5.0",
+]
