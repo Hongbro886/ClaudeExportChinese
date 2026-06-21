@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 
 def main() -> None:
@@ -6,9 +7,10 @@ def main() -> None:
     if "--cli" in sys.argv:
         from claude_export_chinese.exporter import export_conversations
 
+        input_path = Path("conversations.json")
         output_dir, count = export_conversations(
-            input_path="conversations.json",
-            output_dir="Claude_Visual_History",
+            input_path=input_path,
+            output_dir=input_path.parent / "Claude_Visual_History",
         )
         print(f"解析完成！共导出 {count} 个会话，Markdown 已存入文件夹: {output_dir}")
         print(f"请打开 {output_dir}/index.md 浏览全部中文对话。")

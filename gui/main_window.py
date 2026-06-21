@@ -3,7 +3,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import QRect, QSize, Qt
 from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QFileDialog
 from qfluentwidgets import (
     FluentIcon,
@@ -145,9 +145,17 @@ class MainWindow(FluentWindow):
             return
 
         self.input_path = file_path
+        self.output_dir = path.parent / "Claude_Visual_History"
         self.file_label.setText(f"已选择: {path.name}")
         self.file_label.setStyleSheet("color: black;")
         self.export_btn.setEnabled(True)
+
+    def systemTitleBarRect(self, size: QSize) -> QRect:
+        """macOS 原生红绿灯区域：放在左上角。"""
+        if sys.platform == "darwin":
+            return QRect(0, 0 if self.isFullScreen() else 8, 75, size.height())
+
+        return super().systemTitleBarRect(size)
 
     def _start_export(self):
         """开始导出。"""
