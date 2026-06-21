@@ -26,7 +26,12 @@ def parse_conversation(raw: dict[str, Any], index: int) -> Conversation:
     messages = [parse_message(message) for message in raw.get("chat_messages", [])]
     messages.sort(key=lambda message: message.created_at)
 
-    return Conversation(title=title, messages=messages)
+    return Conversation(
+        title=title,
+        created_at=str(raw.get("created_at", "")),
+        updated_at=str(raw.get("updated_at", "")),
+        messages=messages,
+    )
 
 
 def parse_message(raw: dict[str, Any]) -> ChatMessage:

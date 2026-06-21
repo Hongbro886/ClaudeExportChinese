@@ -15,4 +15,6 @@ class Conversation:
     """渲染层使用的对话结构，隔离 Claude 原始导出字段。"""
 
     title: str
+    created_at: str
+    updated_at: str
     messages: list[ChatMessage]

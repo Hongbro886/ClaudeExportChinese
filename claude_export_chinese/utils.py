@@ -10,7 +10,7 @@ def build_safe_filename(title: str, index: int) -> str:
     if not safe_title:
         safe_title = f"Conversation_{index + 1}"
 
-    return f"{safe_title}.md"
+    return f"{index + 1:03d}_{safe_title}.md"
 
 
 def ensure_output_dir(output_dir: str | Path) -> Path:
