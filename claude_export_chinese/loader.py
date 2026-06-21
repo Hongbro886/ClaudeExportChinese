@@ -30,7 +30,7 @@ def parse_conversation(raw: dict[str, Any], index: int) -> Conversation:
 
 
 def parse_message(raw: dict[str, Any]) -> ChatMessage:
-    """只保留生成 HTML 时真正需要的消息字段。"""
+    """只保留生成 Markdown 时真正需要的消息字段。"""
     return ChatMessage(
         sender=str(raw.get("sender", "human")),
         text=str(raw.get("text", "")),

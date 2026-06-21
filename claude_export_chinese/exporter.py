@@ -6,7 +6,7 @@ from .utils import ensure_output_dir
 
 
 def export_conversations(input_path: str | Path, output_dir: str | Path) -> tuple[Path, int]:
-    """完整导出流程：读取 JSON、生成会话页、生成索引页。"""
+    """完整导出流程：读取 JSON、生成会话 Markdown、生成索引。"""
     conversations = load_conversations(input_path)
     output_path = ensure_output_dir(output_dir)
 

@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 def build_safe_filename(title: str, index: int) -> str:
-    """把会话标题转换为可跨平台保存的 HTML 文件名。"""
+    """把会话标题转换为可跨平台保存的 Markdown 文件名。"""
     safe_title = "".join(
         char for char in title if char.isalpha() or char.isdigit() or char in " _-"
     ).strip()
@@ -10,7 +10,7 @@ def build_safe_filename(title: str, index: int) -> str:
     if not safe_title:
         safe_title = f"Conversation_{index + 1}"
 
-    return f"{safe_title}.html"
+    return f"{safe_title}.md"
 
 
 def ensure_output_dir(output_dir: str | Path) -> Path:
